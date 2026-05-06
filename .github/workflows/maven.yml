@@ -33,7 +33,7 @@ jobs:
     - name: 2. Report test coverage
       run: |
           cd roman-number
-          mvn coveralls:report -DrepoToken=${{ secrets.COVERALLS_REPO_TOKEN }}
+          mvn clean package jacoco:report coveralls:report -DrepoToken=${{ secrets.COVERALLS_REPO_TOKEN }}
 
     - name: 3. Esecuzione Test di Unità
       run: |
