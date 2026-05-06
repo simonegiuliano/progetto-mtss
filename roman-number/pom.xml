@@ -13,7 +13,8 @@
 
 
   <properties>
-        <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+    <checkstyle.config.location>checkstyle.xml</checkstyle.config.location>
+    <maven.compiler.release>17</maven.compiler.release>
   </properties>
 
   <dependencies>
