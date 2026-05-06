@@ -28,12 +28,19 @@ jobs:
         cd roman-number
         mvn clean compile
 
-    - name: 2. Esecuzione Test di Unità
+    # Eseguito prima del test poichè più breve (credo?) (non ha senso eseguire
+    # dei test se questi non sono comunque sufficienti)
+    - name: 2. Report test coverage
+      run: |
+          cd roman-number
+          mvn clean package jacoco:report coveralls:report -DrepoToken=${{ secrets.COVERALLS_REPO_TOKEN }}
+
+    - name: 3. Esecuzione Test di Unità
       run: |
         cd roman-number
         mvn test
 
-    - name: 3. Analisi Statica (Checkstyle)
+    - name: 4. Analisi Statica (Checkstyle)
       run: |
         cd roman-number
         mvn checkstyle:check package
@@ -41,4 +48,3 @@ jobs:
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
   #  - name: Update dependency graph
   #    uses: advanced-security/maven-dependency-submission-action@571e99aab1055c2e71a1e2309b9691de18d6b7d6
-
