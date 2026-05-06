@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////////////////////
+// Simone Giuliano 2145591
+// Stefano Sironi 2111037
+////////////////////////////////////////////////////////////////////
+
 package it.unipd.mtss;
 
 import junit.framework.Test;
@@ -7,7 +12,7 @@ import junit.framework.TestSuite;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
     extends TestCase
 {
     /**
