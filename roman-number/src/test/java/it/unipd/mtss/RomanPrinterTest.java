@@ -28,6 +28,15 @@ public class RomanPrinterTest {
         "    \\/    ";
 
 
+    private static final String X = 
+        "__  __\n" +
+        "\\ \\/ /\n" +
+        " \\  / \n" +
+        "  ><  \n" +
+        " /  \\ \n" +
+        "/_/\\_\\";
+
+
     @Test
     public void print_WithNumberOne_ShouldReturnAsciiI() {
         int number = 1;
@@ -75,7 +84,30 @@ public class RomanPrinterTest {
         assertEquals(V, result);
     }
 
+    @Test
+    public void print_WithNumberNine_ShouldReturnAsciiIX() {
+        int number = 9;
+        String expected = 
+            " _____  __  __\n" +
+            "|_   _| \\ \\/ /\n" +
+            "  | |    \\  / \n" +
+            "  | |     ><  \n" +
+            " _| |_   /  \\ \n" +
+            "|_____| /_/\\_\\";
 
+        String result = RomanPrinter.print(number);
+        assertEquals(expected, result);
+    }
+
+
+    @Test
+    public void print_WithNumberTen_ShouldReturnAsciiX() {
+        int number = 10;
+        String result = RomanPrinter.print(number);
+        assertEquals(X, result);
+    }
+
+//FUORI BOUNDARY
     @Test(expected = IllegalArgumentException.class)
     public void print_WithInputOutOfRange_ShouldThrowException() {
         int number = 0;
