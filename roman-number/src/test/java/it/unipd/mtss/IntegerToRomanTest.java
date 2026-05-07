@@ -10,23 +10,53 @@ import org.junit.Test;
 
 public class IntegerToRomanTest {
 
+    // RISULTATI CHE MI ASPETTO:
+
     @Test
-    public void testConvertMinRange() {
-        assertEquals("I", IntegerToRoman.convert(1));
+    public void convert_WithMinimumValidValue_ShouldReturnI() {
+        int number = 1;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("I", result);
     }
 
     @Test
-    public void testConvertMaxRangeIssue2() {
-        assertEquals("III", IntegerToRoman.convert(3));
+    public void convert_WithThree_ShouldReturnIII() {
+        int number = 3;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("III", result);
+    }
+
+    @Test
+    public void convert_WithFour_ShouldReturnIV() {
+        int number = 4;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("IV", result);
+    }
+
+    @Test
+    public void convert_WithSix_ShouldReturnVI() {
+        int number = 6;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("VI", result);
+    }
+
+    //ERRORI 
+
+    @Test(expected = IllegalArgumentException.class)
+    public void convert_WithZero_ShouldThrowException() {
+        int number = 0;
+        IntegerToRoman.convert(number);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testConvertZeroThrowsException() {
-        IntegerToRoman.convert(0);
+    public void convert_WithNegativeNumber_ShouldThrowException() {
+        int number = -1;
+        IntegerToRoman.convert(number);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testConvertNegativeThrowsException() {
-        IntegerToRoman.convert(-5);
+    public void convert_WithNumberGreaterThanSix_ShouldThrowException() {
+        int number = 7;
+        IntegerToRoman.convert(number);
     }
 }
