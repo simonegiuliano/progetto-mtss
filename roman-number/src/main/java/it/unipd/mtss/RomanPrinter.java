@@ -14,21 +14,16 @@ public class RomanPrinter {
     private static String printAsciiArt(final String romanNumber) {
         // Rappresentazione ASCII delle lettere
         final String[] iLetter = {
-            " _____ ",
-            "|_   _|",
-            "  | |  ",
-            "  | |  ",
-            " _| |_ ",
-            "|_____|"
+            " _____ ","|_   _|", "  | |  ","  | |  "," _| |_ ","|_____|"
         };
 
         final String[] vLetter = {
-            "__      __",
-            "\\ \\    / /",
-            " \\ \\  / / ",
-            "  \\ \\/ /  ",
-            "   \\  /   ",
-            "    \\/    "
+            "__      __","\\ \\    / /"," \\ \\  / / ","  \\ \\/ /  ",
+            "   \\  /   ","    \\/    "
+        };
+
+        final String[] xLetter = {
+            "__  __","\\ \\/ /"," \\  / ","  ><  "," /  \\ ","/_/\\_\\"
         };
 
         StringBuilder result = new StringBuilder();
@@ -43,6 +38,8 @@ public class RomanPrinter {
                     result.append(iLetter[row]);
                 } else if (c == 'V') {
                     result.append(vLetter[row]);
+                }  else if (c == 'X') {
+                    result.append(xLetter[row]);
                 }
 
                 // Inserisco uno spazio
@@ -51,7 +48,7 @@ public class RomanPrinter {
                 }
             }
             
-            // Aggiungo l'andata a capo 
+            // Aggiungo l'andata a capo
             if (row < 5) {
                 result.append("\n");
             }
