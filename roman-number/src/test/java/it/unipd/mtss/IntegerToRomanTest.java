@@ -6,11 +6,14 @@
 package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 public class IntegerToRomanTest {
 
-    // RISULTATI CHE MI ASPETTO:
+    // -----------------------------------------------------------
+    // Funzionamento che mi aspetto
+    // -----------------------------------------------------------
 
     //primo numero
     @Test
@@ -19,6 +22,7 @@ public class IntegerToRomanTest {
         String result = IntegerToRoman.convert(number);
         assertEquals("I", result);
     }
+
     // sottrazione
     @Test
     public void convert_WithFour_ShouldReturnIV() {
@@ -42,15 +46,31 @@ public class IntegerToRomanTest {
         String result = IntegerToRoman.convert(number);
         assertEquals("IX", result);
     }
-    //massimo numero
+
     @Test
-    public void convert_WithMinimumValidValue_ShouldReturnX() {
-        int number = 10;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("X", result);
+    public void convert_34_ShouldReturnLX() {
+        String result = IntegerToRoman.convert(34);
+        assertEquals("XXXIV", result);
     }
 
-    //ERRORI 
+    @Test
+    public void convert_40_ShouldReturnLX() {
+        int number = 40;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("XL", result);
+    }
+
+    //massimo numero
+    @Test
+    public void convert_maxValue() {
+        int number = IntegerToRoman.upperLimit;
+        String result = IntegerToRoman.convert(number);
+        assertEquals("L", result);
+    }
+
+    // -----------------------------------------------------------
+    // Controlli su sanificazione input
+    // -----------------------------------------------------------
 
     @Test(expected = IllegalArgumentException.class)
     public void convert_WithZero_ShouldThrowException() {
@@ -65,8 +85,8 @@ public class IntegerToRomanTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void convert_WithNumberGreaterThanSix_ShouldThrowException() {
-        int number = 11;
+    public void convert_overLimit_ShouldThrowException() {
+        int number = 51;
         IntegerToRoman.convert(number);
     }
 }

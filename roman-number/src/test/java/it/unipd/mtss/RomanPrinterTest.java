@@ -6,36 +6,43 @@
 package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import org.junit.Test;
 
 public class RomanPrinterTest {
 
     //costanti
-    private static final String I = 
+    private static final String I =
         " _____ \n" +
         "|_   _|\n" +
         "  | |  \n" +
         "  | |  \n" +
         " _| |_ \n" +
         "|_____|";
-
-    private static final String V = 
+    private static final String V =
         "__      __\n" +
         "\\ \\    / /\n" +
         " \\ \\  / / \n" +
         "  \\ \\/ /  \n" +
         "   \\  /   \n" +
         "    \\/    ";
-
-
-    private static final String X = 
+    private static final String X =
         "__  __\n" +
         "\\ \\/ /\n" +
         " \\  / \n" +
         "  ><  \n" +
         " /  \\ \n" +
         "/_/\\_\\";
-
+    private static final String L =
+        " _      \n" +
+        "| |     \n" +
+        "| |     \n" +
+        "| |     \n" +
+        "| |____ \n" +
+        "|______|";
 
     @Test
     public void print_WithNumberOne_ShouldReturnAsciiI() {
@@ -47,7 +54,7 @@ public class RomanPrinterTest {
     @Test
     public void print_WithNumberThree_ShouldReturnThreeAsciiI() {
         int number = 3;
-        String expected = 
+        String expected =
             " _____   _____   _____ \n" +
             "|_   _| |_   _| |_   _|\n" +
             "  | |     | |     | |  \n" +
@@ -64,7 +71,7 @@ public class RomanPrinterTest {
     public void print_WithNumberFour_ShouldReturnAsciiIV() {
         // (Caso sottrattivo)
         int number = 4;
-        String expected = 
+        String expected =
             " _____  __      __\n" +
             "|_   _| \\ \\    / /\n" +
             "  | |    \\ \\  / / \n" +
@@ -72,10 +79,25 @@ public class RomanPrinterTest {
             " _| |_     \\  /   \n" +
             "|_____|     \\/    ";
 
-  
         String result = RomanPrinter.print(number);
         assertEquals(expected, result);
     }
+
+    // @Test
+    // public void print_49_SouldReturnAsciiXILX() {
+    //     String expected =
+    //         "__  __  _        _____  __  __ \n" +
+    //         "\\ \\/ / | |      |_   _| \\ \\/ / \n" +
+    //         " \\  /  | |        | |    \\  / \n" +
+    //         "  ><   | |        | |     ><   \n" +
+    //         " /  \\  | |____   _| |_   /  \\ \n" +
+    //         "/_/\\_\\ |______| |_____| /_/\\_\\";
+
+    //     System.out.println(expected);
+
+    //     String actual = RomanPrinter.print(49);
+    //     assertEquals(expected, actual);
+    // }
 
     @Test
     public void print_WithNumberFive_ShouldReturnAsciiV() {
@@ -87,7 +109,7 @@ public class RomanPrinterTest {
     @Test
     public void print_WithNumberNine_ShouldReturnAsciiIX() {
         int number = 9;
-        String expected = 
+        String expected =
             " _____  __  __\n" +
             "|_   _| \\ \\/ /\n" +
             "  | |    \\  / \n" +
@@ -99,7 +121,6 @@ public class RomanPrinterTest {
         assertEquals(expected, result);
     }
 
-
     @Test
     public void print_WithNumberTen_ShouldReturnAsciiX() {
         int number = 10;
@@ -107,10 +128,22 @@ public class RomanPrinterTest {
         assertEquals(X, result);
     }
 
-//FUORI BOUNDARY
+    @Test
+    public void print_50_ShouldReturnAsciiL() {
+        String result = RomanPrinter.print(50);
+        assertEquals(L, result);
+    }
+
+    //FUORI BOUNDARY
     @Test(expected = IllegalArgumentException.class)
     public void print_WithInputOutOfRange_ShouldThrowException() {
         int number = 0;
+        RomanPrinter.print(number);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void print_WithInputOverMax() {
+        int number = IntegerToRoman.upperLimit + 1;
         RomanPrinter.print(number);
     }
 }
