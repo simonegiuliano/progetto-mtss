@@ -7,9 +7,6 @@ package it.unipd.mtss;
 
 import static org.junit.Assert.assertEquals;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import org.junit.Test;
 
 public class RomanPrinterTest {
@@ -82,22 +79,6 @@ public class RomanPrinterTest {
         String result = RomanPrinter.print(number);
         assertEquals(expected, result);
     }
-
-    // @Test
-    // public void print_49_SouldReturnAsciiXILX() {
-    //     String expected =
-    //         "__  __  _        _____  __  __ \n" +
-    //         "\\ \\/ / | |      |_   _| \\ \\/ / \n" +
-    //         " \\  /  | |        | |    \\  / \n" +
-    //         "  ><   | |        | |     ><   \n" +
-    //         " /  \\  | |____   _| |_   /  \\ \n" +
-    //         "/_/\\_\\ |______| |_____| /_/\\_\\";
-
-    //     System.out.println(expected);
-
-    //     String actual = RomanPrinter.print(49);
-    //     assertEquals(expected, actual);
-    // }
 
     @Test
     public void print_WithNumberFive_ShouldReturnAsciiV() {
