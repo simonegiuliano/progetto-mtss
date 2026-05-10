@@ -7,27 +7,31 @@ package it.unipd.mtss;
 
 public class IntegerToRoman {
 
-    public static String convert(final int number) {
+    // Valore massimo che si può convertire
+    public static final int upperLimit = 50;
 
+    public static String convert(final int number) {
         //errore nel caso in cui il valore sia fuori dal boundary
-        if (number < 1 || number > 10) {
+        if (number < 1 || number > 50) {
             throw new IllegalArgumentException(
-                    "Il numero deve essere compreso tra 1 e 6");
+                "Il numero deve essere compreso tra 1 e " + upperLimit
+            );
         }
 
-
-        int[] values = {10, 9, 5, 4, 1};
-        String[] symbols = {"X", "IX", "V", "IV", "I"};
+        int[] values = { 50, 40, 10, 9, 5, 4, 1 };
+        String[] symbols = { "L", "XL", "X", "IX", "V", "IV", "I" };
 
         StringBuilder roman = new StringBuilder();
         int remaining = number;
-        /*LOGICA:eseguo un ciclo for nel quale controllo se un valore è >= ad 
-        uno dei simboli romani che ho per ora a disposizione (X, IX, V, IV, I)
-                (IV e IX sono trattati a parte perchè funzionano 
-                per sottrazione). 
-                Se il numero che ho è >= ad uno di questi, inserisco il numero 
-                e poi sottraggo l'equivalente dal mio numero di partenza.
-                Continuo il ciclo finchè il mio numero è > 0*/
+
+        /**
+         * LOGICA:eseguo un ciclo for nel quale controllo se un valore è >= ad
+         * uno dei simboli romani che ho per ora a disposizione (X, IX, V, IV,I)
+         * (IV e IX sono trattati a parte perchè funzionano per sottrazione).
+         * Se il numero che ho è >= ad uno di questi, inserisco il numero e poi
+         * sottraggo l'equivalente dal mio numero di partenza.
+         * Continuo il ciclo finchè il mio numero è > 0
+         */
 
         for (int i = 0; i < values.length; i++) {
             while (remaining >= values[i]) {
