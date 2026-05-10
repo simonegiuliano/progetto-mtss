@@ -44,8 +44,8 @@ public class RomanPrinterTest {
     @Test
     public void print_WithNumberOne_ShouldReturnAsciiI() {
         int number = 1;
-        String result = RomanPrinter.print(number);
-        assertEquals(I, result);
+        String actual = RomanPrinter.print(number);
+        assertEquals(I, actual);
     }
 
     @Test
@@ -59,9 +59,9 @@ public class RomanPrinterTest {
             " _| |_   _| |_   _| |_ \n" +
             "|_____| |_____| |_____|";
 
-        String result = RomanPrinter.print(number);
+        String actual = RomanPrinter.print(number);
 
-        assertEquals(expected, result);
+        assertEquals(expected, actual);
     }
 
     @Test
@@ -76,15 +76,15 @@ public class RomanPrinterTest {
             " _| |_     \\  /   \n" +
             "|_____|     \\/    ";
 
-        String result = RomanPrinter.print(number);
-        assertEquals(expected, result);
+        String actual = RomanPrinter.print(number);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void print_WithNumberFive_ShouldReturnAsciiV() {
         int number = 5;
-        String result = RomanPrinter.print(number);
-        assertEquals(V, result);
+        String actual = RomanPrinter.print(number);
+        assertEquals(V, actual);
     }
 
     @Test
@@ -98,21 +98,21 @@ public class RomanPrinterTest {
             " _| |_   /  \\ \n" +
             "|_____| /_/\\_\\";
 
-        String result = RomanPrinter.print(number);
-        assertEquals(expected, result);
+        String actual = RomanPrinter.print(number);
+        assertEquals(expected, actual);
     }
 
     @Test
     public void print_WithNumberTen_ShouldReturnAsciiX() {
         int number = 10;
-        String result = RomanPrinter.print(number);
-        assertEquals(X, result);
+        String actual = RomanPrinter.print(number);
+        assertEquals(X, actual);
     }
 
     @Test
     public void print_50_ShouldReturnAsciiL() {
-        String result = RomanPrinter.print(50);
-        assertEquals(L, result);
+        String actual = RomanPrinter.print(50);
+        assertEquals(L, actual);
     }
 
     //FUORI BOUNDARY
