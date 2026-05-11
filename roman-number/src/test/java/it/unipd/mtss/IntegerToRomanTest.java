@@ -23,7 +23,15 @@ public class IntegerToRomanTest {
         assertEquals("I", actual);
     }
 
-    // sottrazione
+    //numero più lungo in cifre romane
+    @Test
+    public void convert_WithThreeHundredEightyEight_ShouldReturnCCCLXXXVIII() {
+        int number = 388;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("CCCLXXXVIII", actual);
+    }
+
+    // test per sottrazione
     @Test
     public void convert_WithFour_ShouldReturnIV() {
         int number = 4;
@@ -31,15 +39,7 @@ public class IntegerToRomanTest {
         assertEquals("IV", actual);
     }
 
-    //numero più lungo
-    @Test
-    public void convert_WithEight_ShouldReturnVIII() {
-        int number = 8;
-        String actual = IntegerToRoman.convert(number);
-        assertEquals("VIII", actual);
-    }
-
-    //sottrazione
+    
     @Test
     public void convert_WithNine_ShouldReturnIX() {
         int number = 9;
@@ -61,6 +61,14 @@ public class IntegerToRomanTest {
     }
 
     @Test
+    public void convert_400_ShouldReturnCD() {
+        int number = 400;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("CD", actual);
+    }
+
+    // concatenazione
+    @Test
     public void convert_96_ShouldReturnXCVI(){
         String actual = IntegerToRoman.convert(96);
         assertEquals("XCVI", actual);
@@ -72,12 +80,24 @@ public class IntegerToRomanTest {
         assertEquals("XCIX", actual);
     }
 
+    @Test
+    public void convert_333_ShouldReturnCCCXXXIII(){
+        String actual = IntegerToRoman.convert(333);
+        assertEquals("CCCXXXIII", actual);
+    }
+
+    @Test
+    public void convert_499_ShouldReturnCDXCIX(){
+        String actual = IntegerToRoman.convert(499);
+        assertEquals("CDXCIX", actual);
+    }
+
     //massimo numero
     @Test
     public void convert_maxValue() {
         int number = IntegerToRoman.upperLimit;
         String actual = IntegerToRoman.convert(number);
-        assertEquals("C", actual);
+        assertEquals("D", actual);
     }
 
     // -----------------------------------------------------------
