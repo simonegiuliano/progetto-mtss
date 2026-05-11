@@ -25,10 +25,10 @@ public class IntegerToRomanTest {
 
     //numero più lungo in cifre romane
     @Test
-    public void convert_WithThreeHundredEightyEight_ShouldReturnCCCLXXXVIII() {
-        int number = 388;
+    public void convert_WithEightHundredEightyEight_ShouldReturnDCCCLXXXVIII() {
+        int number = 888;
         String actual = IntegerToRoman.convert(number);
-        assertEquals("CCCLXXXVIII", actual);
+        assertEquals("DCCCLXXXVIII", actual);
     }
 
     // test per sottrazione
@@ -67,6 +67,13 @@ public class IntegerToRomanTest {
         assertEquals("CD", actual);
     }
 
+    @Test
+    public void convert_900_ShouldReturnCM() {
+        int number = 900;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("CM", actual);
+    }
+
     // concatenazione
     @Test
     public void convert_96_ShouldReturnXCVI(){
@@ -92,12 +99,33 @@ public class IntegerToRomanTest {
         assertEquals("CDXCIX", actual);
     }
 
+    @Test
+    public void convert_990_ShouldReturnCMXC() {
+        int number = 990;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("CMXC", actual);
+    }
+
+    @Test
+    public void convert_883_ShouldReturnDCCCLXXXIII() {
+        int number = 883;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("DCCCLXXXIII", actual);
+    }
+
+    @Test
+    public void convert_999_ShouldReturnCMXCIX() {
+        int number = 999;
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("CMXCIX", actual);
+    }
+
     //massimo numero
     @Test
     public void convert_maxValue() {
         int number = IntegerToRoman.upperLimit;
         String actual = IntegerToRoman.convert(number);
-        assertEquals("D", actual);
+        assertEquals("M", actual);
     }
 
     // -----------------------------------------------------------
