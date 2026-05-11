@@ -115,6 +115,46 @@ public class RomanPrinterTest {
         assertEquals(L, actual);
     }
 
+    @Test
+    public void print94_ShouldReturnXCIV() {
+        // XCIV: X (10) + C (100-10=90) + I (1) + V (5-1=4)
+        String expected =
+            "__  __ ________  _____  __      __\n" +
+            "\\ \\/ / |  ____| |_   _| \\ \\    / /\n" +
+            " \\  /  | |        | |    \\ \\  / / \n" +
+            "  ><   | |        | |     \\ \\/ /  \n" +
+            " /  \\  | |____   _| |_     \\  /   \n" +
+            "/_/\\_\\ |______| |_____|     \\/    ";
+
+        assertEquals(expected, RomanPrinter.print(94));
+    }
+
+    @Test
+    public void print99_ShouldReturnXCIX() {
+        String expected =
+            "__  __ ________  _____  __  __\n" +
+            "\\ \\/ / |  ____| |_   _| \\ \\/ /\n" +
+            " \\  /  | |        | |    \\  / \n" +
+            "  ><   | |        | |     ><  \n" +
+            " /  \\  | |____   _| |_   /  \\ \n" +
+            "/_/\\_\\ |______| |_____| /_/\\_\\";
+
+        assertEquals(expected, RomanPrinter.print(99));
+    }
+
+    @Test
+    public void print50_ShouldReturnL() {
+        String expected =
+            " _      \n" +
+            "| |     \n" +
+            "| |     \n" +
+            "| |     \n" +
+            "| |____ \n" +
+            "|______|";
+
+        assertEquals(expected, RomanPrinter.print(50));
+    }
+
     //FUORI BOUNDARY
     @Test(expected = IllegalArgumentException.class)
     public void print_WithInputOutOfRange_ShouldThrowException() {
