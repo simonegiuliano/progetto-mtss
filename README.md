@@ -5,3 +5,6 @@
 
 ## Esempio superamento dei test con github actions
 <img width="1920" height="1014" alt="Screenshot 2026-05-11 at 14-29-51 Chiusura milestone 3 e conclusione progetto · simonegiuliano_progetto-mtss@fab41ca" src="https://github.com/user-attachments/assets/9e52f631-889e-4a61-90fe-6920d9e5c4ae" />
+
+## Nota
+A causa di un errore, sono stati eliminati vari branch pubblici che sarebbero stati necessari per la correzione. Essi sono stati quindi recuperati tramite git reflog e reinseriti tramite un push forzato
