@@ -56,6 +56,14 @@ public class RomanPrinter {
         "| |__| |",
         "|_____/ ",
     };
+    private static final String[] mLetter = {
+        " __  __ ",
+        "|  \\/  |",
+        "| \\  / |",
+        "| |\\/| |",
+        "| |  | |",
+        "|_|  |_|",
+    };
 
 
     public static String print(final int num) {
@@ -99,6 +107,7 @@ public class RomanPrinter {
         case 'L' -> RomanPrinter.lLetter;
         case 'C' -> RomanPrinter.cLetter;
         case 'D' -> RomanPrinter.dLetter;
+        case 'M' -> RomanPrinter.mLetter;
         default -> null;
     };
 }

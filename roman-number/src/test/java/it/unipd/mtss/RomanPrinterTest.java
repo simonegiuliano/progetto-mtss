@@ -10,49 +10,34 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 public class RomanPrinterTest {
-    //costanti
-    private static final String I =
-        " _____ \n" +
-        "|_   _|\n" +
-        "  | |  \n" +
-        "  | |  \n" +
-        " _| |_ \n" +
-        "|_____|";
+    private static final String I =     /*costanti */
+        " _____ \n" +"|_   _|\n" +
+        "  | |  \n" +"  | |  \n" +
+        " _| |_ \n" +"|_____|";
     private static final String V =
-        "__      __\n" +
-        "\\ \\    / /\n" +
-        " \\ \\  / / \n" +
-        "  \\ \\/ /  \n" +
-        "   \\  /   \n" +
-        "    \\/    ";
+    "__      __\n" +"\\ \\    / /\n" +
+    " \\ \\  / / \n" +"  \\ \\/ /  \n" +
+    "   \\  /   \n" +"    \\/    ";
     private static final String X =
-        "__  __\n" +
-        "\\ \\/ /\n" +
-        " \\  / \n" +
-        "  ><  \n" +
-        " /  \\ \n" +
-        "/_/\\_\\";
+        "__  __\n" +"\\ \\/ /\n" +
+        " \\  / \n" +"  ><  \n" +
+        " /  \\ \n" +"/_/\\_\\";
     private static final String L =
-        " _      \n" +
-        "| |     \n" +
-        "| |     \n" +
-        "| |     \n" +
-        "| |____ \n" +
-        "|______|";
+        " _      \n" +"| |     \n" +
+        "| |     \n" +"| |     \n" +
+        "| |____ \n" +"|______|";
     private static final String C =
-        "  _____ \n" +
-        " / ____|\n" +
-        "| |     \n" +
-        "| |     \n" +
-        "| |____ \n" +
-        " \\_____|";
-   private static final String D =
-        " ____   \n" +
-        "|  __ \\\n" +
-        "| |  | |\n" +
-        "| |  | |\n" +
-        "| |__| |\n" +
-        "|_____/ ";
+        "  _____ \n" +" / ____|\n" +
+        "| |     \n" +"| |     \n" +
+        "| |____ \n" +" \\_____|";
+    private static final String D =
+        " ____   \n" + "|  __ \\\n" +
+        "| |  | |\n" +"| |  | |\n" +
+        "| |__| |\n" +"|_____/ ";
+    private static final String M =
+        " __  __ \n" +"|  \\/  |\n" +
+        "| \\  / |\n" +"| |\\/| |\n" +
+        "| |  | |\n" +"|_|  |_|";
     @Test
     public void print_WithNumberOne_ShouldReturnAsciiI() {
         int number = 1;
@@ -126,6 +111,11 @@ public class RomanPrinterTest {
         assertEquals(D, actual);
     }
     @Test
+    public void print_1000_ShouldReturnAsciiM() {
+        String actual = RomanPrinter.print(1000);
+        assertEquals(M, actual);
+    }
+    @Test
     public void print94_ShouldReturnXCIV() {
         String expected =
             "__  __   _____   _____  __      __\n" +
@@ -161,7 +151,7 @@ public class RomanPrinterTest {
         " \\_____| |_____/  /_/\\_\\ |______| |_____|     \\/    ";
 
     assertEquals(expected, RomanPrinter.print(444));
-}
+    }
     @Test
     public void print499_ShouldReturnCDXCIX() {
     String expected =
@@ -173,20 +163,29 @@ public class RomanPrinterTest {
         " \\_____| |_____/  /_/\\_\\  \\_____| |_____| /_/\\_\\";
 
     assertEquals(expected, RomanPrinter.print(499));
-}
+    }
+    @Test
+    public void print944_ShouldReturnCMXLIV() {
+        String expected =
+            "  _____   __  __  __  __  _        _____  __      __\n" +
+            " / ____| |  \\/  | \\ \\/ / | |      |_   _| \\ \\    / /\n" +
+            "| |      | \\  / |  \\  /  | |        | |    \\ \\  / / \n" +
+            "| |      | |\\/| |   ><   | |        | |     \\ \\/ /  \n" +
+            "| |____  | |  | |  /  \\  | |____   _| |_     \\  /   \n" +
+            " \\_____| |_|  |_| /_/\\_\\ |______| |_____|     \\/    ";
 
+        assertEquals(expected, RomanPrinter.print(944));
+    }
     @Test(expected = IllegalArgumentException.class)    //FUORI BOUNDARY
     public void print_WithInputOutOfRange_ShouldThrowException() {
         int number = 0;
         RomanPrinter.print(number);
     }
-
     @Test(expected = IllegalArgumentException.class)
     public void print_WithInputOverMax() {
         int number = IntegerToRoman.upperLimit + 1;
         RomanPrinter.print(number);
     }
-
     @Test(expected = IllegalArgumentException.class)
     public void print_WithInputUnderMin() {
         int number = -1;
