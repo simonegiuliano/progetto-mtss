@@ -39,6 +39,15 @@ public class RomanPrinter {
         "| |____ ",
         "|______|",
     };
+    private static final String[] cLetter = {
+        "________",
+        "|  ____|",
+        "| |     ",
+        "| |     ",
+        "| |____ ",
+        "|______|",
+    };
+
 
     public static String print(final int num) {
         return printAsciiArt(IntegerToRoman.convert(num));
@@ -46,6 +55,7 @@ public class RomanPrinter {
 
     private static String printAsciiArt(final String romanNumber) {
         StringBuilder result = new StringBuilder();
+
         // Ciclo sulle 6 righe dell' ASCII
         for (int row = 0; row < 6; row++) {
             for (int i = 0; i < romanNumber.length(); i++) {
@@ -59,6 +69,8 @@ public class RomanPrinter {
                     result.append(RomanPrinter.xLetter[row]);
                 } else if (c == 'L') {
                     result.append(RomanPrinter.lLetter[row]);
+                } else if (c == 'C'){
+                    result.append(RomanPrinter.cLetter[row]);
                 }
                 // Inserisco uno spazio
                 if (i < romanNumber.length() - 1) {

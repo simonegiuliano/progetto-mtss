@@ -8,18 +8,18 @@ package it.unipd.mtss;
 public class IntegerToRoman {
 
     // Valore massimo che si può convertire
-    public static final int upperLimit = 50;
+    public static final int upperLimit = 100;
 
     public static String convert(final int number) {
         //errore nel caso in cui il valore sia fuori dal boundary
-        if (number < 1 || number > 50) {
+        if (number < 1 || number > upperLimit) {
             throw new IllegalArgumentException(
                 "Il numero deve essere compreso tra 1 e " + upperLimit
             );
         }
 
-        int[] values = { 50, 40, 10, 9, 5, 4, 1 };
-        String[] symbols = { "L", "XL", "X", "IX", "V", "IV", "I" };
+        int[] values = { 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        String[] symbols = { "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
 
         StringBuilder roman = new StringBuilder();
         int remaining = number;

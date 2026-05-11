@@ -19,53 +19,65 @@ public class IntegerToRomanTest {
     @Test
     public void convert_WithMinimumValidValue_ShouldReturnI() {
         int number = 1;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("I", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("I", actual);
     }
 
     // sottrazione
     @Test
     public void convert_WithFour_ShouldReturnIV() {
         int number = 4;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("IV", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("IV", actual);
     }
 
     //numero più lungo
     @Test
     public void convert_WithEight_ShouldReturnVIII() {
         int number = 8;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("VIII", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("VIII", actual);
     }
 
     //sottrazione
     @Test
     public void convert_WithNine_ShouldReturnIX() {
         int number = 9;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("IX", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("IX", actual);
     }
 
     @Test
     public void convert_34_ShouldReturnLX() {
-        String result = IntegerToRoman.convert(34);
-        assertEquals("XXXIV", result);
+        String actual = IntegerToRoman.convert(34);
+        assertEquals("XXXIV", actual);
     }
 
     @Test
     public void convert_40_ShouldReturnLX() {
         int number = 40;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("XL", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("XL", actual);
+    }
+
+    @Test
+    public void convert_96_ShouldReturnXCVI(){
+        String actual = IntegerToRoman.convert(96);
+        assertEquals("XCVI", actual);
+    }
+
+    @Test
+    public void convert_99_ShouldReturnXCIX(){
+        String actual = IntegerToRoman.convert(99);
+        assertEquals("XCIX", actual);
     }
 
     //massimo numero
     @Test
     public void convert_maxValue() {
         int number = IntegerToRoman.upperLimit;
-        String result = IntegerToRoman.convert(number);
-        assertEquals("L", result);
+        String actual = IntegerToRoman.convert(number);
+        assertEquals("C", actual);
     }
 
     // -----------------------------------------------------------
@@ -86,7 +98,7 @@ public class IntegerToRomanTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void convert_overLimit_ShouldThrowException() {
-        int number = 51;
+        int number = IntegerToRoman.upperLimit + 1;
         IntegerToRoman.convert(number);
     }
 }
