@@ -8,7 +8,7 @@ package it.unipd.mtss;
 public class IntegerToRoman {
 
     // Valore massimo che si può convertire
-    public static final int upperLimit = 100;
+    public static final int upperLimit = 1000;
 
     public static String convert(final int number) {
         //errore nel caso in cui il valore sia fuori dal boundary
@@ -18,16 +18,21 @@ public class IntegerToRoman {
             );
         }
 
-        int[] values = { 100, 90, 50, 40, 10, 9, 5, 4, 1 };
-        String[] symbols = { "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I" };
+        int[] values = {1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1 };
+        String[] symbols = {"M", "CM", "D", "CD", "C", "XC", "L", "XL",
+                             "X", "IX", "V", "IV", "I"};
 
         StringBuilder roman = new StringBuilder();
         int remaining = number;
 
         /**
          * LOGICA:eseguo un ciclo for nel quale controllo se un valore è >= ad
-         * uno dei simboli romani che ho per ora a disposizione (X, IX, V, IV,I)
-         * (IV e IX sono trattati a parte perchè funzionano per sottrazione).
+         * uno dei simboli romani che ho per 
+         * ora a disposizione 
+         * (M, CM, D, CD, C, XC, L, XL,
+         *  X, IX, V, IV,I)
+         * (XD, CD, XL, IV e IX sono trattati a parte 
+         * perchè funzionano per sottrazione).
          * Se il numero che ho è >= ad uno di questi, inserisco il numero e poi
          * sottraggo l'equivalente dal mio numero di partenza.
          * Continuo il ciclo finchè il mio numero è > 0
