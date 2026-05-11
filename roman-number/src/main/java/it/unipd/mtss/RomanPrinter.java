@@ -40,12 +40,21 @@ public class RomanPrinter {
         "|______|",
     };
     private static final String[] cLetter = {
-        "________",
-        "|  ____|",
-        "| |     ",
-        "| |     ",
-        "| |____ ",
-        "|______|",
+        "  _____ ",
+        " / ____|",
+        "| |     ", 
+        "| |     ", 
+        "| |____ ", 
+        " \\_____|",
+    };
+
+    private static final String[] dLetter = {
+        " ____   ",
+        "|  __ \\",
+        "| |  | |",
+        "| |  | |",
+        "| |__| |",
+        "|_____/ ",
     };
 
 
@@ -56,34 +65,44 @@ public class RomanPrinter {
     private static String printAsciiArt(final String romanNumber) {
         StringBuilder result = new StringBuilder();
 
-        // Ciclo sulle 6 righe dell' ASCII
         for (int row = 0; row < 6; row++) {
             for (int i = 0; i < romanNumber.length(); i++) {
                 char c = romanNumber.charAt(i);
-                // Selezione del pezzo di riga corretto in base al carattere
-                if (c == 'I') {
-                    result.append(RomanPrinter.iLetter[row]);
-                } else if (c == 'V') {
-                    result.append(RomanPrinter.vLetter[row]);
-                } else if (c == 'X') {
-                    result.append(RomanPrinter.xLetter[row]);
-                } else if (c == 'L') {
-                    result.append(RomanPrinter.lLetter[row]);
-                } else if (c == 'C'){
-                    result.append(RomanPrinter.cLetter[row]);
+        
+                String[] letterArray = getLetterArray(c);
+                if (letterArray != null) {
+                    result.append(letterArray[row]);
                 }
-                // Inserisco uno spazio
+
                 if (i < romanNumber.length() - 1) {
                     result.append(" ");
                 }
             }
-            // Aggiungo l'andata a capo
             if (row < 5) {
                 result.append("\n");
             }
-        }
-        return result.toString();
+        } 
+
+        return result.toString(); 
     }
+    
+    /**
+     * CAMBIO DI PARADIGMA:
+     * dato che il codice precedente avrebbe ecceduto nella cyclomatic 
+     * complexity, al posto di una setie di if else è stato inserito uno switch.
+     */
+    private static String[] getLetterArray(final char c) {
+    return switch (c) {
+        case 'I' -> RomanPrinter.iLetter;
+        case 'V' -> RomanPrinter.vLetter;
+        case 'X' -> RomanPrinter.xLetter;
+        case 'L' -> RomanPrinter.lLetter;
+        case 'C' -> RomanPrinter.cLetter;
+        case 'D' -> RomanPrinter.dLetter;
+        default -> null;
+    };
+}
+    
 
     public static void main(String args[]) {
         System.out.println(
